@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#101010">
-<meta name="description" content="Books by Apostle Prince Emmabel. Buy one book or the complete collection on WhatsApp.">
+<meta name="description" content="Books by Apostle Prince Emmabel. Buy one book or the complete collection.">
 <title>Reflections</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -280,6 +280,37 @@ details.inside ol li::marker { color: var(--accent); }
 @media (min-width: 52rem) { .foot-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr); gap: 3rem; } }
 @media (max-width: 47.99rem) { .footer { padding-bottom: 6.5rem; } }
 
+
+/* payment dialog */
+.pay { border: 1px solid rgba(198,161,91,.5); background: var(--charcoal); color: var(--ivory); padding: 0; width: min(32rem, calc(100vw - 1.5rem)); max-height: calc(100dvh - 1.5rem); overflow: auto; margin: auto; }
+.pay::backdrop { background: rgba(0,0,0,.78); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.pay[open] { animation: payin .45s var(--ease); }
+@keyframes payin { from { opacity: 0; transform: translate3d(0,24px,0); } }
+.pay-in { padding: 1.75rem 1.4rem 1.5rem; position: relative; }
+.pay-in h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.9rem, 6vw, 2.4rem); line-height: 1.1; margin: .6rem 0 1rem; padding-right: 2.5rem; }
+.pay-x { position: absolute; top: .6rem; right: .6rem; width: 2.75rem; height: 2.75rem; border: 1px solid var(--line); background: transparent; color: var(--ivory); font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.pay-x:hover { border-color: var(--gold); color: var(--gold); }
+.pay-sum div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; border-block: 1px solid var(--line); padding: .85rem 0; }
+.pay-sum dt { color: var(--grey); font-size: .9375rem; }
+.pay-sum dd { margin: 0; font-family: var(--font-display); font-size: 2rem; color: var(--gold); line-height: 1; white-space: nowrap; }
+.pay-promo { color: var(--gold); font-size: .8125rem; margin: .6rem 0 0; }
+.pay-acct { margin-top: 1.1rem; border: 1px solid rgba(198,161,91,.4); background: rgba(198,161,91,.06); }
+.pay-acct > div { display: grid; grid-template-columns: 1fr auto; gap: .15rem .75rem; align-items: center; padding: .75rem 1rem; border-top: 1px solid var(--line); }
+.pay-acct > div:first-child { border-top: 0; }
+.pay-acct span { grid-column: 1 / -1; font-size: .6875rem; letter-spacing: .14em; text-transform: uppercase; color: var(--grey); }
+.pay-acct b { font-weight: 500; font-size: 1.0625rem; overflow-wrap: anywhere; user-select: all; }
+.pay-acct b.num { font-size: clamp(1.2rem, 6.2vw, 1.6rem); letter-spacing: .03em; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--ivory); }
+.copy { min-height: 2.75rem; padding: 0 1rem; border: 1px solid var(--gold); background: transparent; color: var(--gold); font: inherit; font-size: .8125rem; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.copy:hover { background: var(--gold); color: var(--obsidian); }
+.pay-miss { margin: 1rem 0 0; padding: .8rem 1rem; border: 1px dashed var(--gold); color: var(--ivory); font-size: .9375rem; }
+.pay-steps { list-style: decimal; margin: 1.2rem 0 1.3rem; padding-left: 1.25rem; color: var(--grey); font-size: .9375rem; line-height: 1.6; display: grid; gap: .4rem; }
+.pay-steps li { display: list-item; padding-left: .25rem; }
+.pay-steps li::marker { color: var(--gold); }
+.pay-steps b { color: var(--ivory); font-weight: 500; }
+.pay .btn { width: 100%; justify-content: center; text-align: center; }
+.pay-fine { margin: .9rem 0 0; font-size: .8125rem; color: var(--grey); line-height: 1.5; }
+body.pay-open { overflow: hidden; }
+
 /* sticky mobile purchase bar */
 .sticky { position: fixed; inset: auto 0 0 0; z-index: 60; display: flex; gap: 0.6rem; padding: 0.65rem var(--gutter) calc(0.65rem + env(safe-area-inset-bottom, 0px)); background: rgba(16, 16, 16, 0.95); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid rgba(198, 161, 91, 0.35); transform: translate3d(0, 110%, 0); visibility: hidden; transition: transform 0.6s var(--ease), visibility 0s linear 0.6s; }
 .sticky.show { transform: none; visibility: visible; transition: transform 0.6s var(--ease), visibility 0s; }
@@ -413,15 +444,15 @@ details.inside ol li::marker { color: var(--accent); }
   <div class="wrap">
     <div class="head">
       <p class="label reveal">How Buying Works</p>
-      <h2 class="h2 reveal" id="how-title">Four steps, <em>all on WhatsApp.</em></h2>
+      <h2 class="h2 reveal" id="how-title">Four steps, <em>clear and simple.</em></h2>
     </div>
     <ol class="steps">
       <li class="step reveal"><div><h3>Choose</h3><p>Pick one book for <span data-money="one">₦5,000</span>, or the complete collection for <span data-money="bundle">₦18,000</span>.</p></div></li>
-      <li class="step reveal"><div><h3>Message on WhatsApp</h3><p>Tap the button. WhatsApp opens with your choice already written. Press Send.</p></div></li>
-      <li class="step reveal"><div><h3>Pay and send your receipt</h3><p>You receive payment instructions in the chat. After paying, send your receipt to the same chat.</p></div></li>
+      <li class="step reveal"><div><h3>See the payment details</h3><p>Tap Buy. You see the account to pay into and the exact amount.</p></div></li>
+      <li class="step reveal"><div><h3>Pay, then tap &ldquo;I&rsquo;ve sent it&rdquo;</h3><p>Transfer the amount, then tap the button. WhatsApp opens with your message written. Send your payment screenshot in the chat.</p></div></li>
       <li class="step reveal"><div><h3>Get your books and access</h3><p>Once your payment is verified, you receive your books, plus the WhatsApp group and Reflections community access.</p></div></li>
     </ol>
-    <p class="note reveal"><strong>Good to know.</strong> Tapping a button on this page only opens a WhatsApp chat. It does not take payment, confirm an order or unlock anything by itself. Access follows verification of your receipt.</p>
+    <p class="note reveal"><strong>Good to know.</strong> This page does not take payment or confirm an order. You pay by bank transfer, and tapping &ldquo;I&rsquo;ve sent it&rdquo; only opens a WhatsApp chat. Your books and access are sent after your payment is checked.</p>
   </div>
 </section>
 
@@ -474,7 +505,7 @@ details.inside ol li::marker { color: var(--accent); }
     <div class="foot-grid">
       <div class="foot-brand">
         <span class="brand-name" style="font-family:var(--font-display);font-size:2.2rem">Reflections</span>
-        <p>Books and coaching from Apostle Prince Emmabel. Purchases are arranged through WhatsApp. This website does not take payments.</p>
+        <p>Books and coaching from Apostle Prince Emmabel. You pay by bank transfer and confirm on WhatsApp. This website does not process payments.</p>
         <p class="f-slogan">The Top Is Your Place</p>
       </div>
       <div>
@@ -496,6 +527,29 @@ details.inside ol li::marker { color: var(--accent); }
   </div>
 </footer>
 
+<dialog id="pay" class="pay" aria-labelledby="pay-title">
+  <div class="pay-in">
+    <button class="pay-x" type="button" id="pay-x" aria-label="Close payment details">&times;</button>
+    <p class="label">Payment</p>
+    <h2 id="pay-title">Pay by bank transfer</h2>
+    <dl class="pay-sum"><div><dt id="pay-item">Item</dt><dd id="pay-amt">&nbsp;</dd></div></dl>
+    <p class="pay-promo" id="pay-promo" hidden>Today&rsquo;s bundle price. It returns to the regular price after the offer day.</p>
+    <div class="pay-acct" id="pay-acct">
+      <div><span>Bank</span><b id="pay-bank"></b></div>
+      <div><span>Account number</span><b class="num" id="pay-num"></b><button type="button" class="copy" id="pay-copy">Copy</button></div>
+      <div><span>Account name</span><b id="pay-name"></b></div>
+    </div>
+    <p class="pay-miss" id="pay-miss" hidden>The payment account has not been added to this page yet. Tap the button below to ask for the account details on WhatsApp.</p>
+    <ol class="pay-steps">
+      <li>Transfer exactly <b id="pay-amt2"></b> to the account above.</li>
+      <li>Tap <b>I&rsquo;ve sent the payment</b>. WhatsApp opens with your message ready.</li>
+      <li>Send the message, then attach your payment screenshot in the chat.</li>
+    </ol>
+    <a class="btn" id="pay-sent" href="#pay" target="_blank" rel="noopener"></a>
+    <p class="pay-fine">Your books and community access are sent after your payment is checked. This button only opens a chat. It does not confirm payment.</p>
+  </div>
+</dialog>
+
 <div class="sticky" id="sticky" aria-label="Purchase options">
   <a class="btn main sm" href="#bundle" data-wa="bundle">All 5 books <span data-money="bundle">₦18,000</span></a>
   <a class="btn ghost sm" href="#books">One book <span data-money="one">₦5,000</span></a>
@@ -506,6 +560,7 @@ details.inside ol li::marker { color: var(--accent); }
   "use strict";
   /* ---------- configuration: change these values, nothing else ---------- */
   var WHATSAPP_NUMBER = "2348034995410";   // international format, digits only, no + or spaces
+  var PAY = { bank: "Ecobank", accountNumber: "3231198954", accountName: "Rev Emmabel Prince" };   // payment account shown to buyers. Fill all three.
   var AUTHOR = "Apostle Prince Emmabel";   // used in the prefilled WhatsApp messages
   var PRICE_ONE = 5000;                    // naira, one book
   var PRICE_BUNDLE_REGULAR = 18000;        // naira, all five books, after the offer ends
@@ -559,6 +614,7 @@ details.inside ol li::marker { color: var(--accent); }
   function waLink(msg) { return number ? "https://wa.me/" + number + "?text=" + encodeURIComponent(msg) : ""; }
   function msgOne(title) { return "Hello, I would like to purchase " + title + " by " + AUTHOR + " for " + naira(PRICE_ONE) + ". Please send me the payment instructions."; }
   function msgBundle() { return "Hello, I would like to purchase the complete five-book bundle by " + AUTHOR + " for " + naira(PRICE_BUNDLE) + ". Please send me the payment instructions."; }
+  function msgPaid(item, amount) { return "Hello, I have sent " + naira(amount) + " for " + item + " by " + AUTHOR + ". I am sending my payment screenshot now. Please confirm and send my books."; }
   function msgAsk() { return "Hello, I have a question about the books by " + AUTHOR + " before I buy."; }
 
   // prices written once, shown everywhere
@@ -608,7 +664,7 @@ details.inside ol li::marker { color: var(--accent); }
       '<blockquote class="pull">' + esc(b.quote) + '</blockquote>' +
       '<details class="inside"><summary>Inside this book<span class="k">' + esc(b.kind) + '</span></summary><ol>' + chapters + '</ol></details>' +
       '<div class="buy"><div class="price-row"><span class="price">' + money.one + '</span><span class="price-note">Includes WhatsApp group and Reflections access</span></div>' +
-      '<a class="btn" href="#final" data-wa="one" data-title="' + esc(b.title) + '">' + WA_SVG + 'Buy This Book &mdash; ' + money.one + '<span class="sr"> (opens WhatsApp): ' + esc(b.title) + '</span></a>' +
+      '<a class="btn" href="#final" data-wa="one" data-title="' + esc(b.title) + '">Buy This Book &mdash; ' + money.one + '<span class="sr"> (shows payment details): ' + esc(b.title) + '</span></a>' +
       '<a class="link" href="#final" data-wa="ask">Ask a question first</a></div></div></article>';
   }).join("");
   $("#rows").innerHTML = rows;
@@ -628,8 +684,8 @@ details.inside ol li::marker { color: var(--accent); }
     ["How much do I save with the bundle?", "Five books bought one at a time come to " + money.total + ". The bundle is " + money.bundle + ", so you save " + money.save + "."],
     ["Do single-book buyers also get access to the WhatsApp group?", "Yes. Every paying customer, whether they buy one book or all five, gets access to the WhatsApp group where Apostle Prince Emmabel is the admin and you can ask him questions."],
     ["Do single-book buyers also join Reflections?", "Yes. Access to Reflections, his coaching community, is included with every purchase, including a single book."],
-    ["How do I pay?", "You do not pay on this website. Tap a Buy button, send the WhatsApp message that opens, and you will receive payment instructions in the chat."],
-    ["How do I submit my receipt?", "After you pay, send your payment receipt to the same WhatsApp chat."],
+    ["How do I pay?", "Tap a Buy button. You will see the bank account to pay into and the exact amount. Transfer the money, then tap the button that says you have sent it."],
+    ["How do I submit my payment proof?", "After you tap that button, WhatsApp opens with a message already written. Send it, then attach your payment screenshot in the same chat."],
     ["When do I receive my books and community access?", "Once your payment has been verified, you will receive your books and instructions for joining the WhatsApp group and Reflections through WhatsApp. The chat will tell you what to expect."],
     ["Can I ask a question before I pay?", 'Yes. <a href="#final" data-wa="ask">Message on WhatsApp</a> and ask before you decide.']
   ];
@@ -642,6 +698,38 @@ details.inside ol li::marker { color: var(--accent); }
     else { a.setAttribute("aria-disabled", "true"); a.removeAttribute("href"); }
   });
   if (!number) { $("#wa-missing").hidden = false; }
+
+  /* ---------- payment dialog ---------- */
+  var dlg = $("#pay"), payCtx = null;
+  var payReady = !!(PAY.bank && PAY.accountNumber && PAY.accountName);
+  function openPay(kind, title) {
+    var one = kind === "one", item = one ? title : "Complete five-book collection", amount = one ? PRICE_ONE : PRICE_BUNDLE;
+    $("#pay-item").textContent = item; $("#pay-amt").textContent = naira(amount); $("#pay-amt2").textContent = naira(amount);
+    $("#pay-promo").hidden = !(PROMO && !one);
+    $("#pay-acct").hidden = !payReady; $("#pay-miss").hidden = payReady; $("#pay-copy").hidden = !payReady;
+    $("#pay-bank").textContent = PAY.bank; $("#pay-num").textContent = PAY.accountNumber; $("#pay-name").textContent = PAY.accountName;
+    var sent = $("#pay-sent");
+    if (payReady && number) { sent.href = waLink(msgPaid(item, amount)); sent.innerHTML = WA_SVG + "I&rsquo;ve sent the payment"; }
+    else if (number) { sent.href = waLink("Hello, I would like to buy " + item + " by " + AUTHOR + " for " + naira(amount) + ". Please send me the account details."); sent.innerHTML = WA_SVG + "Ask for account details"; }
+    $("#pay-copy").textContent = "Copy";
+    if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute("open", ""); }
+    document.body.classList.add("pay-open");
+  }
+  function closePay() { if (dlg.close) { dlg.close(); } else { dlg.removeAttribute("open"); } document.body.classList.remove("pay-open"); }
+  $("#pay-x").addEventListener("click", closePay);
+  dlg.addEventListener("close", function () { document.body.classList.remove("pay-open"); });
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) { closePay(); } });
+  $("#pay-copy").addEventListener("click", function () {
+    var b = this, t = PAY.accountNumber;
+    function ok() { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 2000); }
+    function fallback() { var r = document.createRange(); r.selectNodeContents($("#pay-num")); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); b.textContent = "Selected"; }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(ok, fallback); } else { fallback(); }
+  });
+  $$("[data-wa=one],[data-wa=bundle]").forEach(function (a) {
+    a.setAttribute("href", "#pay"); a.removeAttribute("target"); a.removeAttribute("rel");
+    a.addEventListener("click", function (e) { e.preventDefault(); openPay(a.getAttribute("data-wa"), a.getAttribute("data-title")); });
+  });
+
 
   /* ---------- header, progress ---------- */
   var header = $("#site-header"), progressEl = $("#progress"), ticking = false;
